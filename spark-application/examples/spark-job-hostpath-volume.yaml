@@ -137,7 +137,7 @@ spec:
             \"s3a://nyc-tlc/csv_backup\" \
             \"2017\" \
             \"s3a://nyc-tlc/misc/taxi _zone_lookup.csv\" \
-            \"s3a://<RESULTS_BUCKET>/nyctaxi\"
+            \"s3a://opticloudab-volvocars-t1/nyctaxi\"
             \"spark_eks\""
           ]
           volumeMounts:

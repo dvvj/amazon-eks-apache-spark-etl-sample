@@ -6,10 +6,10 @@ kind: ClusterConfig
 
 metadata:
   name: spark-eks-best-practices
-  region: eu-west-1
-  version: "1.20"
+  region: eu-north-1
+  version: "1.24"
 
-availabilityZones: ["eu-west-1a", "eu-west-1b"]
+availabilityZones: ["eu-north-1a", "eu-north-1b"]
 
 vpc:
 # If you wish to use an existing VPC, please provide the subnet ID, change the availability zones above accordingly
@@ -91,7 +91,7 @@ nodeGroups:
 
   # Nodegroup used to run Spark driver on x86 based nodes with on-demand
   - name: spark-od-1a
-    availabilityZones: ["eu-west-1a"]
+    availabilityZones: ["eu-north-1a"]
     minSize: 0
     maxSize: 1
     privateNetworking: true
@@ -122,7 +122,7 @@ nodeGroups:
 
   # Nodegroup used to run Spark executors on x86 based nodes with instance store for shuffle, spot and executors collocation
   - name: spark-spot-nvme-1a
-    availabilityZones: ["eu-west-1a"]
+    availabilityZones: ["eu-north-1a"]
     minSize: 0
     maxSize: 3
     privateNetworking: true
