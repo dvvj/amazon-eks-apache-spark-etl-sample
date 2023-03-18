@@ -124,10 +124,10 @@ nodeGroups:
   - name: spark-spot-nvme-1a
     availabilityZones: ["eu-north-1a"]
     minSize: 0
-    maxSize: 3
+    maxSize: 2
     privateNetworking: true
     instancesDistribution:
-      instanceTypes: ["r5d.4xlarge", "r5ad.4xlarge", "r5dn.4xlarge"]
+      instanceTypes: ["i3.2xlarge"]
       onDemandBaseCapacity: 0
       onDemandPercentageAboveBaseCapacity: 0
       spotAllocationStrategy: capacity-optimized
