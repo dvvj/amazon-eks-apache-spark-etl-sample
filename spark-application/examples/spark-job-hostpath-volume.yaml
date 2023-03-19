@@ -84,7 +84,7 @@ spec:
     spec:
       containers:
         - name: spark
-          image: <REPO>/spark:v3.1.2
+          image: jiajidev/spark:v3.1.2
           args: [
               "/bin/sh",
               "-c",
@@ -106,7 +106,7 @@ spec:
             --conf spark.executor.memory=27G \
             --conf spark.executor.cores=3 \
             --conf spark.sql.shuffle.partitions=40 \
-            --conf spark.kubernetes.container.image=<REPO>>/spark-eks:v3.1.2 \
+            --conf spark.kubernetes.container.image=jiajidev/spark-eks:v3.1.2 \
             --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem \
             --conf spark.kubernetes.container.image.pullPolicy=Always \
             --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \

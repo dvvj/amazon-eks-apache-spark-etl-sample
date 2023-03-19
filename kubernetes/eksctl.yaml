@@ -106,7 +106,7 @@ nodeGroups:
       k8s.io/cluster-autoscaler/node-template/label/noderole: spark
       k8s.io/cluster-autoscaler/node-template/label/disk: none
       k8s.io/cluster-autoscaler/node-template/label/node-lifecycle: on-demand
-      k8s.io/cluster-autoscaler/node-template/label/topology.kubernetes.io/zone: us-east-1a
+      k8s.io/cluster-autoscaler/node-template/label/topology.kubernetes.io/zone: eu-north-1a
       k8s.io/cluster-autoscaler/experiments: owned
       k8s.io/cluster-autoscaler/enabled: "true"
     iam:
@@ -124,10 +124,10 @@ nodeGroups:
   - name: spark-spot-nvme-1a
     availabilityZones: ["eu-north-1a"]
     minSize: 0
-    maxSize: 3
+    maxSize: 2
     privateNetworking: true
     instancesDistribution:
-      instanceTypes: ["r5d.4xlarge", "r5ad.4xlarge", "r5dn.4xlarge"]
+      instanceTypes: ["r5.4xlarge", "i3.4xlarge"]
       onDemandBaseCapacity: 0
       onDemandPercentageAboveBaseCapacity: 0
       spotAllocationStrategy: capacity-optimized
@@ -141,7 +141,7 @@ nodeGroups:
       k8s.io/cluster-autoscaler/node-template/label/noderole: spark
       k8s.io/cluster-autoscaler/node-template/label/disk: nvme
       k8s.io/cluster-autoscaler/node-template/label/node-lifecycle: spot
-      k8s.io/cluster-autoscaler/node-template/label/topology.kubernetes.io/zone: us-east-1a
+      k8s.io/cluster-autoscaler/node-template/label/topology.kubernetes.io/zone: eu-north-1a
       k8s.io/cluster-autoscaler/node-template/taint/spot: "true:NoSchedule"
       k8s.io/cluster-autoscaler/experiments: owned
       k8s.io/cluster-autoscaler/enabled: "true"

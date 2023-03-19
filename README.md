@@ -24,6 +24,10 @@ Run the folowwing command to build respectively a spark base image and the appli
  * Create the EKS cluster using eksctl
  
    `eksctl create cluster -f kubernetes/eksctl.yaml`
+
+ * Create spark namespace
+ 
+   `kubectl create namespace spark`
    
  * Deploy the Kubernetes autoscaler
  
@@ -37,8 +41,9 @@ eksctl create iamserviceaccount \
 --name spark \
 --namespace spark \
 --cluster spark-eks-best-practices \
---attach-policy-arn <POLICY_ARN> \
---approve --override-existing-serviceaccounts
+--attach-policy-arn arn:aws:iam::829404019274:policy/Spark-on-eks-nyt \
+--approve --override-existing-serviceaccounts \
+--region eu-north-1
 ```
 ```
 eksctl create iamserviceaccount \
@@ -47,6 +52,7 @@ eksctl create iamserviceaccount \
 --cluster spark-eks-best-practices \
 --attach-policy-arn <POLICY_ARN> \
 --approve --override-existing-serviceaccounts
+--region eu-north-1
 ```
 
  * Launch Spark jobs with self managed Amazon EKS Nodegroups or with AWS Fargate
