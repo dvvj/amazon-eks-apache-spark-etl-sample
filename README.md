@@ -73,8 +73,5 @@ eksctl create iamserviceaccount \
 
 `kubectl port-forward -n=spark <SPARK_DRIVER_NAME> 4040:4040`
 
-
-
-
-   
-
+## setup job history server
+see: https://medium.com/@GusCavanaugh/how-to-install-spark-history-server-on-aws-eks-with-helm-85e2d3f356f7
