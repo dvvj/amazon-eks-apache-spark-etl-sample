@@ -10,3 +10,5 @@ TODO
 
 /benchmark/
 /spark-application/.bsp/
+metastore_db/
+derby.log

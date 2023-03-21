@@ -12,6 +12,8 @@ libraryDependencies ++= {
     "org.apache.spark" %% "spark-core" % "3.3.1" % "provided",
     "org.apache.spark" %% "spark-sql" % "3.3.1" % "provided",
     "org.apache.spark" %% "spark-hive" % "3.3.1" % "provided",
+    // "org.apache.hadoop" % "hadoop-aws" % "3.3.2",
+    // "com.amazonaws" % "aws-java-sdk-bundle" % "1.12.333",
     "org.scalactic" %% "scalactic" % "3.1.4",
     "org.scalatest" %% "scalatest" % "3.1.4" % Test
   )

@@ -31,6 +31,7 @@ object ValueZones {
 
   lazy val session =
     SparkSession.builder
+//      .config("spark.master", "local[4]")
       .appName("nyctaxi-value-zones")
       .enableHiveSupport()
       .getOrCreate()
@@ -140,8 +141,8 @@ object ValueZones {
       .withColumnRenamed("green_avg(minute_rate)","green_avg_minute_rate")
       .withColumnRenamed("green_count(minute_rate)","green_count")
 
-    session.sql("CREATE DATABASE IF NOT EXISTS `"+dbName+"`")
-    session.sql("use `"+dbName+"`")
+//    session.sql("CREATE DATABASE IF NOT EXISTS `"+dbName+"`")
+//    session.sql("use `"+dbName+"`")
 
     val rawQuery = allEventsWithZone
       .withColumn("year", year($"pickup_datetime"))
