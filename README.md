@@ -15,12 +15,14 @@ Run the folowwing command to build respectively a spark base image and the appli
    
    `cd spark-application`
 
-   add aws libs:
+   add aws libs to base image `jiajidev/spark:3.3.1-aws-hadoop3`:
    `aws-java-sdk-bundle-1.12.339.jar`
    `hadoop-aws-3.3.2.jar`
-   
+
+   `docker build -t jiajidev/spark-eks:3.3.1-aws-hadoop3 .`
+   `docker push jiajidev/spark-eks:3.3.1-aws-hadoop3`
 ### to be updated
-   `docker build -t <DOCKER_REPO>/spark-eks:v3.1.2 .`
+   `docker build -t <DOCKER_REPO>/spark-eks:v3.1.2: .`
    
    `docker push <DOCKER_REPO>/spark-eks:v3.1.2`
    
