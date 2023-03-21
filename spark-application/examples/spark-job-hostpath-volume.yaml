@@ -84,7 +84,7 @@ spec:
     spec:
       containers:
         - name: spark
-          image: jiajidev/spark:v3.1.2
+          image: jiajidev/spark-eks:3.3.1-aws-hadoop3
           args: [
               "/bin/sh",
               "-c",
@@ -93,6 +93,9 @@ spec:
             --deploy-mode cluster \
             --name spark-eks \
             --class ValueZones \
+            --conf spark.eventLog.enabled=true \
+            --conf spark.eventLog.compress=false \
+            --conf spark.eventLog.dir=s3a://opticloudab-volvocars-t1/spark-history \
             --conf spark.jars.ivy=/tmp/.ivy \
             --conf spark.dynamicAllocation.enabled=true \
             --conf spark.dynamicAllocation.shuffleTracking.enabled=true \
@@ -106,7 +109,7 @@ spec:
             --conf spark.executor.memory=27G \
             --conf spark.executor.cores=3 \
             --conf spark.sql.shuffle.partitions=40 \
-            --conf spark.kubernetes.container.image=jiajidev/spark-eks:v3.1.2 \
+            --conf spark.kubernetes.container.image=jiajidev/spark-eks:3.3.1-aws-hadoop3 \
             --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem \
             --conf spark.kubernetes.container.image.pullPolicy=Always \
             --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
@@ -133,7 +136,7 @@ spec:
             --conf spark.hadoop.fs.s3a.aws.credentials.provider=com.amazonaws.auth.WebIdentityTokenCredentialsProvider \
             --conf spark.kubernetes.authenticate.submission.caCertFile=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
             --conf spark.kubernetes.authenticate.submission.oauthTokenFile=/var/run/secrets/kubernetes.io/serviceaccount/token \
-            local:///opt/spark/jars/spark-eks-assembly-3.1.2.jar \
+            local:///opt/spark/jars/spark-eks-assembly-3.3.1.jar \
             \"s3a://nyc-tlc/csv_backup\" \
             \"2017\" \
             \"s3a://nyc-tlc/misc/taxi _zone_lookup.csv\" \

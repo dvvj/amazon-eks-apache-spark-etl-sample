@@ -1,6 +1,6 @@
 name := "spark-eks"
 
-version := "3.1.2"
+version := "3.3.1"
 
 scalaVersion := "2.12.14"
 
@@ -9,9 +9,9 @@ mainClass in assembly := Some("ValueZones.Main")
 // additional librairies
 libraryDependencies ++= {
   Seq(
-    "org.apache.spark" %% "spark-core" % "3.1.2" % "provided",
-    "org.apache.spark" %% "spark-sql" % "3.1.2" % "provided",
-    "org.apache.spark" %% "spark-hive" % "3.1.2" % "provided",
+    "org.apache.spark" %% "spark-core" % "3.3.1" % "provided",
+    "org.apache.spark" %% "spark-sql" % "3.3.1" % "provided",
+    "org.apache.spark" %% "spark-hive" % "3.3.1" % "provided",
     "org.scalactic" %% "scalactic" % "3.1.4",
     "org.scalatest" %% "scalatest" % "3.1.4" % Test
   )

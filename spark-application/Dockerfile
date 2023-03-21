@@ -52,9 +52,9 @@ COPY . ./
 RUN sbt clean assembly
 
 # Use your own Spark base image built for AWS compatiblity here
-FROM vgkowski/spark:v3.1.2 AS final
+FROM jiajidev/spark:3.3.1-aws-hadoop3 AS final
 
-COPY --from=build /opt/input/target/scala-2.12/spark-eks-assembly-3.1.2.jar  /opt/spark/jars
+COPY --from=build /opt/input/target/scala-2.12/spark-eks-assembly-3.3.1.jar  /opt/spark/jars
 
 ENV SPARK_HOME /opt/spark
 

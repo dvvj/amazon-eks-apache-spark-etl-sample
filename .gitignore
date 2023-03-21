@@ -5,6 +5,8 @@
 /spark-application/target/
 TODO
 
-/.idea/
+.idea/
+.bsp/
+
 /benchmark/
 /spark-application/.bsp/
