@@ -16,8 +16,8 @@ Run the folowwing command to build respectively a spark base image and the appli
    `cd spark-application`
 
    add aws libs to base image `jiajidev/spark:3.3.1-aws-hadoop3`:
-   `aws-java-sdk-bundle-1.12.339.jar`
-   `hadoop-aws-3.3.2.jar`
+   - `aws-java-sdk-bundle-1.12.339.jar`
+   - `hadoop-aws-3.3.2.jar`
 
    `docker build -t jiajidev/spark-eks:3.3.1-aws-hadoop3 .`
    `docker push jiajidev/spark-eks:3.3.1-aws-hadoop3`
@@ -38,7 +38,7 @@ Run the folowwing command to build respectively a spark base image and the appli
    
  * Deploy the Kubernetes autoscaler
  
-   `kubectl create -f kubernetes/cluster_autoscaler.yaml`
+   `kubectl create -f kubernetes/cluster_autoscaler.yml`
  
  * Create an Amazon IAM Policy with the right permissions for the job
    
