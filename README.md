@@ -7,9 +7,15 @@ Examples providing best practices for Apache Spark on Amazon EKS
  * Eksctl [https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)
  * One of those:
     * An ECR repository accessible from the EKS cluster you will deploy
-     * A Dockerhub account and public access for the EKS cluster you will deploy 
+    * A Dockerhub account and public access for the EKS cluster you will deploy 
      
 ## Preparing the required Docker images
+
+Base spark image:
+   - download spark binary: https://archive.apache.org/dist/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz
+   - `tar xf spark-3.3.1-bin-hadoop3.tgz`
+   - `bin/docker-image-tool.sh -r jiajidev -t 3.3.1-aws-hadoop3 build`
+   - `bin/docker-image-tool.sh -r jiajidev -t 3.3.1-aws-hadoop3 push`
 
 Run the folowwing command to build respectively a spark base image and the application image
    
@@ -18,6 +24,7 @@ Run the folowwing command to build respectively a spark base image and the appli
    add aws libs to base image `jiajidev/spark:3.3.1-aws-hadoop3`:
    - `aws-java-sdk-bundle-1.12.339.jar`
    - `hadoop-aws-3.3.2.jar`
+   - `spark-hadoop-cloud_2.12-3.3.1.jar`
 
    `docker build -t jiajidev/spark-eks:3.3.1-aws-hadoop3 .`
    `docker push jiajidev/spark-eks:3.3.1-aws-hadoop3`
