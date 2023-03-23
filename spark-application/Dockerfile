@@ -56,6 +56,8 @@ FROM jiajidev/spark:3.3.1-aws-hadoop3 AS final
 
 COPY --from=build /opt/input/target/scala-2.12/spark-eks-assembly-3.3.1.jar  /opt/spark/jars
 
+COPY conf/ /opt/spark/conf/
+
 ENV SPARK_HOME /opt/spark
 
 WORKDIR /opt/spark/work-dir
