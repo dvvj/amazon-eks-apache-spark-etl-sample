@@ -61,7 +61,8 @@ object ValueZones {
     } catch {
       case ex: Exception =>
         logger.error(ex.getMessage)
-        logger.error(ex.getStackTrace.toString)
+        ex.printStackTrace()
+        logger.error(ex.getStackTrace.toList.mkString("\n\t", "\n\t", ""))
     }
   }
 
