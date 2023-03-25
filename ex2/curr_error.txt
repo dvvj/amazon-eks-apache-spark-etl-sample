@@ -1,0 +1,175 @@
+++ id -u
++ myuid=185
+++ id -g
++ mygid=0
++ set +e
+++ getent passwd 185
++ uidentry=
++ set -e
++ '[' -z '' ']'
++ '[' -w /etc/passwd ']'
++ echo '185:x:185:0:anonymous uid:/opt/spark:/bin/false'
++ SPARK_CLASSPATH=':/opt/spark/jars/*'
++ env
++ grep SPARK_JAVA_OPT_
++ sort -t_ -k4 -n
++ sed 's/[^=]*=\(.*\)/\1/g'
++ readarray -t SPARK_EXECUTOR_JAVA_OPTS
++ '[' -n '' ']'
++ '[' '' == 2 ']'
++ '[' '' == 3 ']'
++ '[' -n '' ']'
++ '[' -z ']'
++ case "$1" in
++ shift 1
++ CMD=("$SPARK_HOME/bin/spark-submit" --conf "spark.driver.bindAddress=$SPARK_DRIVER_BIND_ADDRESS" --deploy-mode client "$@")
++ exec /usr/bin/tini -s -- /opt/spark/bin/spark-submit --conf spark.driver.bindAddress=192.168.142.24 --deploy-mode client --properties-file /opt/spark/conf/spark.properties --class org.apache.spark.deploy.PythonRunner s3a://opticloudab-volvocars-t1/ex-part.py s3a://taxi-events/ s3a://taxi-stage/
+Ivy Default Cache set to: /tmp
+The jars for the packages stored in: /tmp/jars
+:: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.hadoop#hadoop-aws added as a dependency
+org.apache.spark#spark-avro_2.12 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-e5dda6aa-f848-418e-a1ad-e0cc27c0350e;1.0
+	confs: [default]
+	found org.apache.hadoop#hadoop-aws;3.2.0 in central
+	found com.amazonaws#aws-java-sdk-bundle;1.11.375 in central
+	found org.apache.spark#spark-avro_2.12;3.0.1 in central
+	found org.spark-project.spark#unused;1.0.0 in central
+downloading https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.0/hadoop-aws-3.2.0.jar ...
+	[SUCCESSFUL ] org.apache.hadoop#hadoop-aws;3.2.0!hadoop-aws.jar (56ms)
+downloading https://repo1.maven.org/maven2/org/apache/spark/spark-avro_2.12/3.0.1/spark-avro_2.12-3.0.1.jar ...
+	[SUCCESSFUL ] org.apache.spark#spark-avro_2.12;3.0.1!spark-avro_2.12.jar (47ms)
+downloading https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.11.375/aws-java-sdk-bundle-1.11.375.jar ...
+	[SUCCESSFUL ] com.amazonaws#aws-java-sdk-bundle;1.11.375!aws-java-sdk-bundle.jar (1387ms)
+downloading https://repo1.maven.org/maven2/org/spark-project/spark/unused/1.0.0/unused-1.0.0.jar ...
+	[SUCCESSFUL ] org.spark-project.spark#unused;1.0.0!unused.jar (9ms)
+:: resolution report :: resolve 2576ms :: artifacts dl 1505ms
+	:: modules in use:
+	com.amazonaws#aws-java-sdk-bundle;1.11.375 from central in [default]
+	org.apache.hadoop#hadoop-aws;3.2.0 from central in [default]
+	org.apache.spark#spark-avro_2.12;3.0.1 from central in [default]
+	org.spark-project.spark#unused;1.0.0 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   4   |   4   |   4   |   0   ||   4   |   4   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-e5dda6aa-f848-418e-a1ad-e0cc27c0350e
+	confs: [default]
+	4 artifacts copied, 0 already retrieved (97048kB/129ms)
+23/03/25 09:41:49 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+23/03/25 09:41:50 WARN MetricsConfig: Cannot locate configuration: tried hadoop-metrics2-s3a-file-system.properties,hadoop-metrics2.properties
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+23/03/25 09:41:52 INFO SparkContext: Running Spark version 3.0.1
+23/03/25 09:41:52 INFO ResourceUtils: ==============================================================
+23/03/25 09:41:52 INFO ResourceUtils: Resources for spark.driver:
+
+23/03/25 09:41:52 INFO ResourceUtils: ==============================================================
+23/03/25 09:41:52 INFO SparkContext: Submitted application: repartition-job
+23/03/25 09:41:52 INFO SecurityManager: Changing view acls to: 185,root
+23/03/25 09:41:52 INFO SecurityManager: Changing modify acls to: 185,root
+23/03/25 09:41:52 INFO SecurityManager: Changing view acls groups to: 
+23/03/25 09:41:52 INFO SecurityManager: Changing modify acls groups to: 
+23/03/25 09:41:52 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(185, root); groups with view permissions: Set(); users  with modify permissions: Set(185, root); groups with modify permissions: Set()
+23/03/25 09:41:53 INFO Utils: Successfully started service 'sparkDriver' on port 7078.
+23/03/25 09:41:53 INFO SparkEnv: Registering MapOutputTracker
+23/03/25 09:41:53 INFO SparkEnv: Registering BlockManagerMaster
+23/03/25 09:41:53 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+23/03/25 09:41:53 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+23/03/25 09:41:53 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+23/03/25 09:41:53 INFO DiskBlockManager: Created local directory at /var/data/spark-bba057b1-1f46-46a7-8dbe-6665477afa53/blockmgr-e5910ccd-a8d6-4de2-a5eb-89507d91d79c
+23/03/25 09:41:53 INFO MemoryStore: MemoryStore started with capacity 2004.6 MiB
+23/03/25 09:41:53 INFO SparkEnv: Registering OutputCommitCoordinator
+23/03/25 09:41:53 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+23/03/25 09:41:54 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://repartition-job-8cb28d871825261c-driver-svc.spark.svc:4040
+23/03/25 09:41:54 INFO SparkKubernetesClientFactory: Auto-configuring K8S client using current context from users K8S config file
+23/03/25 09:41:55 ERROR SparkContext: Error initializing SparkContext.
+org.apache.spark.SparkException: External scheduler cannot be instantiated
+	at org.apache.spark.SparkContext$.org$apache$spark$SparkContext$$createTaskScheduler(SparkContext.scala:2954)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:533)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:238)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: io.fabric8.kubernetes.client.KubernetesClientException: Failure executing: GET at: https://kubernetes.default.svc/api/v1/namespaces/spark/pods/repartition-job-driver. Message: Forbidden!Configured service account doesn't have access. Service account may have been revoked. pods "repartition-job-driver" is forbidden: User "system:serviceaccount:spark:spark" cannot get resource "pods" in API group "" in the namespace "spark".
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.requestFailure(OperationSupport.java:568)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.assertResponseCode(OperationSupport.java:505)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:471)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:430)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:395)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:376)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.handleGet(BaseOperation.java:845)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:214)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.get(BaseOperation.java:168)
+	at org.apache.spark.scheduler.cluster.k8s.ExecutorPodsAllocator.$anonfun$driverPod$1(ExecutorPodsAllocator.scala:59)
+	at scala.Option.map(Option.scala:230)
+	at org.apache.spark.scheduler.cluster.k8s.ExecutorPodsAllocator.<init>(ExecutorPodsAllocator.scala:58)
+	at org.apache.spark.scheduler.cluster.k8s.KubernetesClusterManager.createSchedulerBackend(KubernetesClusterManager.scala:113)
+	at org.apache.spark.SparkContext$.org$apache$spark$SparkContext$$createTaskScheduler(SparkContext.scala:2948)
+	... 13 more
+23/03/25 09:41:55 INFO SparkUI: Stopped Spark web UI at http://repartition-job-8cb28d871825261c-driver-svc.spark.svc:4040
+23/03/25 09:41:55 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+23/03/25 09:41:55 INFO MemoryStore: MemoryStore cleared
+23/03/25 09:41:55 INFO BlockManager: BlockManager stopped
+23/03/25 09:41:55 INFO BlockManagerMaster: BlockManagerMaster stopped
+23/03/25 09:41:55 WARN MetricsSystem: Stopping a MetricsSystem that is not running
+23/03/25 09:41:55 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+23/03/25 09:41:55 INFO SparkContext: Successfully stopped SparkContext
+Traceback (most recent call last):
+  File "/tmp/spark-fddc1e19-007f-45d1-a37a-f0b1d4016762/ex-part.py", line 13, in <module>
+    .appName("repartition-job")\
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/sql/session.py", line 186, in getOrCreate
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/context.py", line 376, in getOrCreate
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/context.py", line 136, in __init__
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/context.py", line 198, in _do_init
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/context.py", line 315, in _initialize_context
+  File "/opt/spark/python/lib/py4j-0.10.9-src.zip/py4j/java_gateway.py", line 1569, in __call__
+  File "/opt/spark/python/lib/py4j-0.10.9-src.zip/py4j/protocol.py", line 328, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling None.org.apache.spark.api.java.JavaSparkContext.
+: org.apache.spark.SparkException: External scheduler cannot be instantiated
+	at org.apache.spark.SparkContext$.org$apache$spark$SparkContext$$createTaskScheduler(SparkContext.scala:2954)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:533)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:238)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: io.fabric8.kubernetes.client.KubernetesClientException: Failure executing: GET at: https://kubernetes.default.svc/api/v1/namespaces/spark/pods/repartition-job-driver. Message: Forbidden!Configured service account doesn't have access. Service account may have been revoked. pods "repartition-job-driver" is forbidden: User "system:serviceaccount:spark:spark" cannot get resource "pods" in API group "" in the namespace "spark".
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.requestFailure(OperationSupport.java:568)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.assertResponseCode(OperationSupport.java:505)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:471)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:430)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:395)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:376)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.handleGet(BaseOperation.java:845)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:214)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.get(BaseOperation.java:168)
+	at org.apache.spark.scheduler.cluster.k8s.ExecutorPodsAllocator.$anonfun$driverPod$1(ExecutorPodsAllocator.scala:59)
+	at scala.Option.map(Option.scala:230)
+	at org.apache.spark.scheduler.cluster.k8s.ExecutorPodsAllocator.<init>(ExecutorPodsAllocator.scala:58)
+	at org.apache.spark.scheduler.cluster.k8s.KubernetesClusterManager.createSchedulerBackend(KubernetesClusterManager.scala:113)
+	at org.apache.spark.SparkContext$.org$apache$spark$SparkContext$$createTaskScheduler(SparkContext.scala:2948)
+	... 13 more
+
+23/03/25 09:41:55 INFO ShutdownHookManager: Shutdown hook called
+23/03/25 09:41:55 INFO ShutdownHookManager: Deleting directory /var/data/spark-bba057b1-1f46-46a7-8dbe-6665477afa53/spark-66d474b2-75de-4838-b68c-cf0629d8193a
+23/03/25 09:41:55 INFO ShutdownHookManager: Deleting directory /tmp/spark-fddc1e19-007f-45d1-a37a-f0b1d4016762
+23/03/25 09:41:55 INFO MetricsSystemImpl: Stopping s3a-file-system metrics system...
+23/03/25 09:41:55 INFO MetricsSystemImpl: s3a-file-system metrics system stopped.
+23/03/25 09:41:55 INFO MetricsSystemImpl: s3a-file-system metrics system shutdown complete.

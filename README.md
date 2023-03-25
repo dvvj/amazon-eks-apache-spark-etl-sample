@@ -28,10 +28,6 @@ Run the folowwing command to build respectively a spark base image and the appli
 
    - `docker build -t jiajidev/spark-eks:3.3.1-aws-hadoop3 .`
    - `docker push jiajidev/spark-eks:3.3.1-aws-hadoop3`
-### to be updated
-   `docker build -t <DOCKER_REPO>/spark-eks:v3.1.2: .`
-   
-   `docker push <DOCKER_REPO>/spark-eks:v3.1.2`
    
 ## Running the demo steps
 
