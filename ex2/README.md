@@ -4,6 +4,8 @@
 
 `kubectl create ns spark`
 
+copy `ex-part.py` to s3
+
 ```
 helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8s-operator
 helm repo update
