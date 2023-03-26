@@ -1,3 +1,16 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: spark-role
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: edit
+subjects:
+  - kind: ServiceAccount
+    name: spark
+    namespace: spark
+---
 apiVersion: "sparkoperator.k8s.io/v1beta2"
 kind: SparkApplication
 metadata:
@@ -20,7 +33,7 @@ spec:
   image: "3bittechs/spark-py:3.0.1@sha256:dc1225d8429351426f05ba2dca85054368ec35f110601059c20d5587a029860f"
   imagePullPolicy: IfNotPresent
   mainApplicationFile: s3a://opticloudab-volvocars-t1/ex-part.py
-  arguments: ['s3a://taxi-events/', 's3a://taxi-stage/']
+  arguments: ['s3a://opticloudab-volvocars-t1/taxi-events/', 's3a://opticloudab-volvocars-t1/taxi-stage/']
   sparkVersion: "3.0.1"
   restartPolicy:
     type: Never

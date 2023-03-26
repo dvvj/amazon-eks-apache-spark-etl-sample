@@ -5,7 +5,9 @@
 `kubectl create ns spark`
 
 ```
-helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8s-operatorhelm repo updatehelm install spark-operator spark-operator/spark-operator --namespace spark-operator --create-namespace --set sparkJobNamespace=spark
+helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8s-operator
+helm repo update
+helm install spark-operator spark-operator/spark-operator --namespace spark-operator --create-namespace --set sparkJobNamespace=spark
 ```
 
 
