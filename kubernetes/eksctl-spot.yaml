@@ -64,8 +64,9 @@ fargateProfiles:
 managedNodeGroups:
   # Nodegroup used to support tools like Kubedashboard, Cluster Autoscaler...
   - name: tooling
-    instanceType: t3.large
-    minSize: 0
+    instanceTypes: ["i3.2xlarge"]
+    spot: true
+    minSize: 1
     maxSize: 2
     desiredCapacity: 1
     volumeSize: 20
@@ -96,7 +97,7 @@ nodeGroups:
     maxSize: 1
     privateNetworking: true
     instancesDistribution:
-      instanceTypes: ["i3.xlarge"]
+      instanceTypes: ["i3.2xlarge"]
       onDemandBaseCapacity: 0
       onDemandPercentageAboveBaseCapacity: 0
       spotAllocationStrategy: capacity-optimized
@@ -109,7 +110,7 @@ nodeGroups:
       k8s.io/cluster-autoscaler/node-template/label/kubernetes.io/os: linux
       k8s.io/cluster-autoscaler/node-template/label/noderole: spark
       k8s.io/cluster-autoscaler/node-template/label/disk: none
-      k8s.io/cluster-autoscaler/node-template/label/node-lifecycle: on-demand
+      k8s.io/cluster-autoscaler/node-template/label/node-lifecycle: spot
       k8s.io/cluster-autoscaler/node-template/label/topology.kubernetes.io/zone: eu-north-1a
       k8s.io/cluster-autoscaler/experiments: owned
       k8s.io/cluster-autoscaler/enabled: "true"
