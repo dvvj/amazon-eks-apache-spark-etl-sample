@@ -1,0 +1,7 @@
+Events:
+  Type     Reason             Age                    From                Message
+  ----     ------             ----                   ----                -------
+  Warning  FailedScheduling   13m                    default-scheduler   0/1 nodes are available: 1 node(s) didn't match Pod's node affinity/selector. preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+  Normal   TriggeredScaleUp   13m                    cluster-autoscaler  pod triggered scale-up: [{eksctl-spark-eks-best-practices-nodegroup-spark-od-1a-NodeGroup-13LXHIKWW4UVX 0->1 (max: 1)}]
+  Normal   NotTriggerScaleUp  3m20s (x48 over 12m)   cluster-autoscaler  pod didn't trigger scale-up (it wouldn't fit if a new node is added): 1 node(s) had taints that the pod didn't tolerate, 1 max node group size reached
+  Warning  FailedScheduling   3m10s (x2 over 8m10s)  default-scheduler   0/2 nodes are available: 2 node(s) didn't match Pod's node affinity/selector. preemption: 0/2 nodes are available: 2 Preemption is not helpful for scheduling.
